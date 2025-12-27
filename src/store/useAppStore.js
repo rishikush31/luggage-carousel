@@ -19,10 +19,12 @@ export const useAppStore = create((set, get) => ({
 
     // ACTIONS
 
-    getLastLuggageX: () => { // Use for spawnLuggage checking
+    getLastLuggageX: () => {
         const { luggages } = get();
-        return luggages.length > 0 ? luggages[luggages.length - 1].x : null;
+        const active = luggages.filter(l => !l.inStorage);  // FIX
+        return active.length > 0 ? active[active.length - 1].x : null;
     },
+
 
     spawnLuggage: () =>
         set((state) => ({

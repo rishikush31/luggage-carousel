@@ -14,7 +14,11 @@ const Carousel = () => {
     const lastX = useAppStore.getState().getLastLuggageX();
     const MIN_GAP = 140; // width + padding
 
+    if(lastX === null)
+      console.log("No luggage found");
+
     if (lastX === null || lastX >= MIN_GAP) { // If no luggage OR the last luggage has moved enough → spawn a new one
+      console.log("calling spawnLuggae");
       spawnLuggage();
     }
   }, 16);

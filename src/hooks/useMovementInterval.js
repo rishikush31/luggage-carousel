@@ -13,14 +13,15 @@ const useMovementInterval = (callback, interval = 16) => {
 
   // since this setInterval call is blocked by react in background, let it be, we will update the final position in useAppStore by calculating last updateTime of position
   useEffect(() => {
-    setInterval(() => {
-      
+    let id = setInterval(() => {
       const now = Date.now();
       const deltaTime = now - lastTimeRef.current; // ms since last time
       lastTimeRef.current = now;
 
       savedCallback.current(deltaTime*speed); // pass deltaTime to callback
     }, interval);
+
+    return () => clearInterval(id); // clearing old interval is necessary
 
   }, [interval, speed]);
 };
