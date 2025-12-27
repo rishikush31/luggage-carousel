@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +14,31 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+@keyframes slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-slide {
+  animation: slide linear infinite;
+}
+
+
+@keyframes slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slide-left 0.25s ease-out;
 }
