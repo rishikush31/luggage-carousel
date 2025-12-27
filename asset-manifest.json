@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/luggage-carousel/static/css/main.9d88c61e.css",
+    "main.js": "/luggage-carousel/static/js/main.7e53bb9a.js",
+    "static/js/453.f231353d.chunk.js": "/luggage-carousel/static/js/453.f231353d.chunk.js",
+    "index.html": "/luggage-carousel/index.html",
+    "main.9d88c61e.css.map": "/luggage-carousel/static/css/main.9d88c61e.css.map",
+    "main.7e53bb9a.js.map": "/luggage-carousel/static/js/main.7e53bb9a.js.map",
+    "453.f231353d.chunk.js.map": "/luggage-carousel/static/js/453.f231353d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d88c61e.css",
+    "static/js/main.7e53bb9a.js"
+  ]
+}
