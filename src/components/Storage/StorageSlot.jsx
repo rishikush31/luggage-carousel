@@ -5,44 +5,46 @@ import { useAppStore } from "../../store/useAppStore";
 
 const StorageSlot = ({ slotId }) => {
 
-  const { placeInStorage } = useAppStore();
+    const { placeInStorage } = useAppStore();
 
-  const [, drop] = useDrop({
+    const [, drop] = useDrop({
 
-    accept: ItemTypes.LUGGAGE, // What type to accept
+        accept: ItemTypes.LUGGAGE, // What type to accept
 
-    canDrop: () => { // check on hovering item on the slot
-      const slot = useAppStore.getState().storage.find((s) => s.id === slotId);
-      return slot?.luggageId === null;
-    },
+        canDrop: () => { // check on hovering item on the slot
+            const slot = useAppStore.getState().storage.find((s) => s.id === slotId);
+            return slot?.luggageId === null;
+        },
 
-    drop: (item) => { // call this on drop event 
-      const slot = useAppStore.getState().storage.find((s) => s.id === slotId);
-      if (slot?.luggageId === null) placeInStorage(slotId, item.id);
-      return { slotId };
-    },
+        drop: (item) => { // call this on drop event 
+            const slot = useAppStore.getState().storage.find((s) => s.id === slotId);
+            if (slot?.luggageId === null) placeInStorage(slotId, item.id);
+            return { slotId };
+        },
 
-    collect: (monitor) => ({ // collector function called everytime to update state
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    }),
-  });
+        collect: (monitor) => ({ // collector function called everytime to update state
+            isOver: monitor.isOver(),
+            canDrop: monitor.canDrop(),
+        }),
+    });
 
-  const slot = useAppStore.getState().storage.find((s) => s.id === slotId);
+    const slot = useAppStore.getState().storage.find((s) => s.id === slotId);
 
-  return (
-    <div
-      ref={drop}
-      className={`w-20 h-20 flex items-center justify-center rounded-lg
-    border-8 border-black p-2`}
-    >
-      {slot?.luggageId ? (
-        <div className="font-bold flex items-center justify-center text-lg h-full w-full text-white bg-black rounded">{slot.luggageId}</div>
-      ) : (
-        <div className="items-center justify-center"></div>
-      )}
-    </div>
-  );
+    return (
+        <div
+            ref={drop}
+            className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-lg border-4 sm:border-8 border-black p-1 sm:p-2"
+        >
+            {slot?.luggageId ? (
+                <div className="font-bold flex items-center justify-center text-sm sm:text-lg h-4/5 w-4/5 text-white bg-black rounded">
+                    {slot.luggageId}
+                </div>
+            ) : (
+                <div className="h-4/5 w-4/5 flex items-center justify-center"></div>
+            )}
+        </div>
+
+    );
 };
 
 export default StorageSlot;
